@@ -130,7 +130,7 @@ main(int argc, char *argv[])
                   struct pam_conv pam_convo = {
                     conversation, keybuffer };
 
-                  iss = pam_start("xscreensaver",(const char*)getlogin(), &pam_convo, &pamh);
+                  iss = pam_start("system-auth",(const char*)getlogin(), &pam_convo, &pamh);
                   if (iss != PAM_SUCCESS) {
                     printf("pam_start error %s\n",pam_strerror(pamh,iss));
                   }
