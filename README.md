@@ -15,3 +15,10 @@ mouse, and only unlocks it if you type your login password and hit return.
 
 You can also override the password by specifying it as the first argument of
 the command line. A third way is to set the XLPASSWD environment variable.
+
+2021 Addition: use PAM to check password (for those who have accounts set up
+with LDAP, NDIS, etc., and where the crypted passwords are not in the passwd
+or shadow file). 
+
+Perhaps this violates the philosphy of "super-simple", but should work on more
+systems. 

@@ -5,7 +5,7 @@ X11HOME = /usr/X11R6
 
 CC	= gcc
 CFLAGS	= -O2 -Wall -I${X11HOME}/include ${NEEDSHADOW}
-LIBS	= -L${X11HOME}/lib -lX11
+LIBS	= -L${X11HOME}/lib -lX11 -lpam
 
 # Uncomment for systems with libcrypt
 LIBS   += -lcrypt
