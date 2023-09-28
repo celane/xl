@@ -29,4 +29,8 @@ realclean: clean
 	rm -f xl
 
 dist: LICENSE  main.c  Makefile  README.md  xl.spec
-	tar czvf xl-$(VERSION).tar.gz $^
+	mkdir xl-$(VERSION)
+	cp $^ xl-$(VERSION)
+	tar czvf xl-$(VERSION).tar.gz xl-$(VERSION)
+	rm -rf xl-$(VERSION)
+
