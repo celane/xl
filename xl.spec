@@ -2,7 +2,7 @@
 
 Name:           xl
 Version:        1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        super-simple X screen locker
 
 License:        BSD 3-Clause
@@ -17,25 +17,23 @@ BuildRequires:  pam-devel
 Super simple X screen locker
 
 %prep
-rm -rf %{NVdir}
-git clone %{url}.git %{NVdir}
+%setup -q
 
 %build
-cd %{NVdir}
 make
 
 %install
-pushd %{NVdir}
 install -d %{buildroot}%{_bindir}
 install xl %{buildroot}%{_bindir}
-popd
 
 %files
-%license %{NVdir}/LICENSE
-%doc %{NVdir}/README.md 
+%license LICENSE
+%doc README.md 
 %{_bindir}/xl
 
 %changelog
+* Thu Sep 28 2023 Chuck Lane <lane@dchooz.org> - 1.0-2
+- fix stuff needed for github autobuild
 * Wed Dec 22 2021 Chuck Lane <lane@duphy4.physics.drexel.edu> - 1.0-1
 - initial spec file
 
