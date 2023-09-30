@@ -13,8 +13,8 @@ echo RELEASE=${RELEASE} >> $GITHUB_ENV
 
 mkdir outputs
 
-mock -r rocky+epel-8-x86_64 --buildsrpm --spec=${NAME}-${VERSION}/${NAME}.spec --sources=. --resultdir=./outputs
-mock -r rocky+epel-8-x86_64 --rebuild outputs/${NAME}-${VERSION}-${RELEASE}.el8.src.rpm
+mock -r rocky+epel-8-x86_64 --buildsrpm --spec=${NAME}-${VERSION}/${NAME}.spec --sources=. --resultdir=./outputs -N
+#mock -r rocky+epel-8-x86_64 --rebuild outputs/${NAME}-${VERSION}-${RELEASE}.el8.src.rpm
 #mv /var/lib/mock/rocky+epel-8-x86_64/result/${NAME}-${VERSION}-${RELEASE}.el8.x86_64.rpm .
 
 exit 0
