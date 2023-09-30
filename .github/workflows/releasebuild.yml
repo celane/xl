@@ -75,12 +75,12 @@ jobs:
         - name: Upload RPMs
           uses: actions/upload-artifact@v3
           with:
-            name: xl-${{ env.VERSION }}-${{ env.RELEASE }}
+            name: do upload of rpm outputs
             path: outputs/*.rpm
 
         - name: Upload Assets To Release
           if: "!github.event.release.prerelease"
-          uses:xresloader/upload-to-github-release@v1
+          uses: xresloader/upload-to-github-release@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
