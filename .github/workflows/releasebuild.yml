@@ -72,23 +72,11 @@ jobs:
         - name: Run rpm build script
           run: ./mockbuild.sh  ${{ env.VERSION }}
 
-        - name: Upload EL8 RPMs
+        - name: Upload RPMs
           uses: actions/upload-artifact@v3
           with:
-            name: xl-${{ env.VERSION }}-${{ env.RELEASE }}.el8
-            path: xl-${{ env.VERSION }}-${{ env.RELEASE }}.el8.*.rpm
-
-        - name: Upload EL7 RPMs
-          uses: actions/upload-artifact@v3
-          with:
-            name: xl-${{ env.VERSION }}-${{ env.RELEASE }}.el7
-            path: xl-${{ env.VERSION }}-${{ env.RELEASE }}.el7.*.rpm
-
-        - name: Upload openSUSE Leap 15.3 RPMs
-          uses: actions/upload-artifact@v3
-          with:
-            name: xl-${{ env.VERSION }}-${{ env.RELEASE }}.suse.lp153
-            path: xl-${{ env.VERSION }}-${{ env.RELEASE }}.suse.lp153.*.rpm
+            name: xl-${{ env.VERSION }}-${{ env.RELEASE }}
+            path: outputs/*.rpm
 
         - name: Upload Assets To Release
           if: "!github.event.release.prerelease"
@@ -96,7 +84,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            file: "xl-${{ env.VERSION }}-${{ env.RELEASE }}.*.rpm"
+            file: "*.rpm"
             draft: false
             update_latest_release: true
             tags: true
@@ -107,7 +95,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            file: 'xl-${{ env.VERSION }}.tar.gz;xl-${{ env.VERSION }}-${{ env.RELEASE }}.*.rpm'
+            file: "*.rpm"
             draft: false
             update_latest_release: false
             prerelease: true
