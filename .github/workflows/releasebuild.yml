@@ -76,7 +76,7 @@ jobs:
           uses: actions/upload-artifact@v3
           with:
             name: do upload of rpm outputs
-            path: outputs/*.rpm
+            path: outputs/*
 
         - name: Upload Assets To Release
           if: "!github.event.release.prerelease"
@@ -84,7 +84,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            file: "*.rpm"
+            file: "*"
             draft: false
             update_latest_release: true
             tags: true
