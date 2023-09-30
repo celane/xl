@@ -25,9 +25,6 @@ jobs:
         run: |
           echo "SRC=${GITHUB_REF}" >> $GITHUB_ENV
 
-      - name: debug env
-        run: cat $GITHUB_ENV
-
       - name: Checkout Code
         uses: actions/checkout@v3
 
@@ -95,11 +92,11 @@ jobs:
 
         - name: Upload Assets To Release
           if: "!github.event.release.prerelease"
-          uses: xresloader/upload-to-github-release@v1
+          uses:xresloader/upload-to-github-release@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            file: 'xl-${{ env.VERSION }}.tar.gz;xl-${{ env.VERSION }}-${{ env.RELEASE }}.*.rpm'
+            file: "xl-${{ env.VERSION }}-${{ env.RELEASE }}.*.rpm"
             draft: false
             update_latest_release: true
             tags: true
