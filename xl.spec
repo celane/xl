@@ -7,6 +7,7 @@ Summary:        super-simple X screen locker
 
 License:        BSD 3-Clause
 URL:            https://github.com/celane/xl
+Source0:        xl-%{version}.tar.gz
 
 Requires:       gcc
 Requires:       make
