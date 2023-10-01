@@ -72,6 +72,9 @@ jobs:
         - name: Run rpm build script
           run: ./mockbuild.sh  ${{ env.VERSION }}
 
+        - name: See what the results are
+          run: ls -lR
+
         - name: Upload RPMs
           uses: actions/upload-artifact@v3
           with:
