@@ -87,7 +87,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            file: "xl-${{ env.VERSION }}-${{ env.RELEASE }}.*.rpm"
+            file: "outputs/xl-${{ env.VERSION }}-${{ env.RELEASE }}.*.rpm"
             draft: false
             update_latest_release: true
             tags: true
