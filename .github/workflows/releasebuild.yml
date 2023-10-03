@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build tar.gz
-        run: make dist
+        run: make VERSION=${{ env.VERSION }} dist
 
       - name: Upload mock script
         uses: actions/upload-artifact@v3
@@ -72,14 +72,8 @@ jobs:
         - name: Run rpm build script
           run: ./mockbuild.sh  ${{ env.VERSION }}
 
-        - name: See what the results are
-          run: ls -lR
-
         - name: move rpms to main dir
           run: mv outputs/*.rpm .
-
-        - name: see results 2
-          run: ls -lR
 
         - name: Upload Assets To Release
           if: "!github.event.release.prerelease"
@@ -87,7 +81,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            file: "*"
+            file: "*.rpm"
             draft: false
             update_latest_release: true
             tags: true

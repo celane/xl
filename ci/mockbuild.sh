@@ -3,7 +3,6 @@
 NAME=xl
 VERSION=$1
 
-dnf install -y epel-release
 dnf install -y mock
 
 tar -xf ${NAME}-${VERSION}.tar.gz ${NAME}-${VERSION}/${NAME}.spec
@@ -13,15 +12,23 @@ echo RELEASE=${RELEASE} >> $GITHUB_ENV
 
 mkdir outputs
 
-mock -r rocky+epel-8-x86_64 --buildsrpm --spec=${NAME}-${VERSION}/${NAME}.spec --sources=. --resultdir=./outputs -N
-#mock -r rocky+epel-8-x86_64 --rebuild outputs/${NAME}-${VERSION}-${RELEASE}.el8.src.rpm
-#mv /var/lib/mock/rocky+epel-8-x86_64/result/${NAME}-${VERSION}-${RELEASE}.el8.x86_64.rpm .
+config='almalinux-8-x86_64'
+dist='el8.alma'
+mock -r $config --buildsrpm \
+     --spec=${NAME}-${VERSION}/${NAME}.spec \
+     --sources=. --resultdir=./outputs -N
+    
+mock -r $config \
+     --rebuild outputs/${NAME}-${VERSION}-${RELEASE}.${dist}.src.rpm \
+     --resultdir=./outputs -N
 
-exit 0
-mock -r centos+epel-7-x86_64 --buildsrpm --spec=${NAME}-${VERSION}/${NAME}.spec --sources=.
-mv /var/lib/mock/centos+epel-7-x86_64/result/${NAME}-${VERSION}-${RELEASE}.el7.x86_64.rpm .
-mv /var/lib/mock/centos+epel-7-x86_64/result/${NAME}-${VERSION}-${RELEASE}.el7.src.rpm .
+config='fedora-38-x86_64'
+dist='fc38'
+mock -r $config --buildsrpm \
+     --spec=${NAME}-${VERSION}/${NAME}.spec \
+     --sources=. --resultdir=./outputs -N
+    
+mock -r $config \
+     --rebuild outputs/${NAME}-${VERSION}-${RELEASE}.${dist}.src.rpm \
+     --resultdir=./outputs -N
 
-mock -r opensuse-leap-15.3-x86_64 --buildsrpm --spec=${NAME}-${VERSION}/${NAME}.spec --sources=.
-mv /var/lib/mock/opensuse-leap-15.3-x86_64/result/${NAME}-${VERSION}-${RELEASE}.suse.lp153.x86_64.rpm .
-mv /var/lib/mock/opensuse-leap-15.3-x86_64/result/${NAME}-${VERSION}-${RELEASE}.suse.lp153.src.rpm .

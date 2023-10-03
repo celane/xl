@@ -1,7 +1,7 @@
 # uncomment next line if you need shadow passwd support
 #NEEDSHADOW= -DNEED_SHADOW
 
-VERSION = 1.0
+VERSION ?= 1.0
 X11HOME = /usr/X11R6
 
 CC	= gcc
