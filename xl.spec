@@ -1,7 +1,5 @@
-%define NVdir %{name}-%{version}
-
 Name:           xl
-Version:        1.0
+Version:        %{version_}
 Release:        2%{?dist}
 Summary:        super-simple X screen locker
 
