@@ -3,6 +3,7 @@
 NAME=xl
 VERSION=$1
 
+dnf install -y epel-release
 dnf install -y mock
 
 tar -xf ${NAME}-${VERSION}.tar.gz ${NAME}-${VERSION}/${NAME}.spec
