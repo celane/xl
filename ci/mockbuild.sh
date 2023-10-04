@@ -19,11 +19,15 @@ mock -r $config --buildsrpm \
      --define="version_ $VERSION" \
      --spec=${NAME}-${VERSION}/${NAME}.spec \
      --sources=. --resultdir=./outputs -N
-    
+
+ls -R
+
 mock -r $config \
      --rebuild outputs/${NAME}-${VERSION}-${RELEASE}.${dist}.src.rpm \
      --define="version_ $VERSION" \
      --resultdir=./outputs -N
+
+ls -R
 
 config='fedora-38-x86_64'
 dist='fc38'
@@ -31,9 +35,12 @@ mock -r $config --buildsrpm \
      --define="version_ $VERSION" \
      --spec=${NAME}-${VERSION}/${NAME}.spec \
      --sources=. --resultdir=./outputs -N
-    
+
+ls -R
+
 mock -r $config \
      --rebuild outputs/${NAME}-${VERSION}-${RELEASE}.${dist}.src.rpm \
      --define="version_ $VERSION" \
      --resultdir=./outputs -N
 
+ls -R
