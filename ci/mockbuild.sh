@@ -28,7 +28,7 @@ mock -r $config \
      --resultdir=./outputs -N
 
 ls -R
-cat build.log
+cat outputs/build.log
 exit 0
 config='fedora-38-x86_64'
 dist='fc38'
