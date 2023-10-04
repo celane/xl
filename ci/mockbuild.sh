@@ -14,7 +14,7 @@ echo RELEASE=${RELEASE} >> $GITHUB_ENV
 mkdir outputs
 
 config='almalinux-8-x86_64'
-dist='el8.alma'
+dist='el8'
 mock -r $config --buildsrpm \
      --define="version_ $VERSION" \
      --spec=${NAME}-${VERSION}/${NAME}.spec \
@@ -28,7 +28,8 @@ mock -r $config \
      --resultdir=./outputs -N
 
 ls -R
-
+cat build.log
+exit 0
 config='fedora-38-x86_64'
 dist='fc38'
 mock -r $config --buildsrpm \
