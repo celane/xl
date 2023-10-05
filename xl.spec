@@ -1,3 +1,5 @@
+define %debug_package %{nil}
+
 Name:           xl
 Version:        %{version_}
 Release:        2%{?dist}
