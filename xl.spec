@@ -1,4 +1,4 @@
-%define %debug_package %{nil}
+%global debug_package %{nil}
 
 Name:           xl
 Version:        %{version_}
