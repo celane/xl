@@ -9,9 +9,11 @@ License:        BSD 3-Clause
 URL:            https://github.com/celane/xl
 Source0:        xl-%{version}.tar.gz
 
-Requires:       gcc
-Requires:       make
 Requires:       pam
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  libX11-devel
+BuildRequires:  libxcrypt-devel
 BuildRequires:  pam-devel
 
 %description
